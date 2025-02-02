@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 import requests
+from dotenv import 
 
 def index(request: HttpRequest):
     category_list = Category.objects.all()
