@@ -9,7 +9,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
 import requests
-from dotenv import 
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def index(request: HttpRequest):
     category_list = Category.objects.all()
@@ -152,8 +156,8 @@ def delivery_order(request):
     cart = get_or_create_cart(request.user)
 
 
-    api_key = '1f2a35c979752370bef1905edea9696d'
-    api_url = 'https://api.novaposhta.ua/v2.0/json/'
+    api_key = os.getenv('API_KEY')
+    api_url = os.getnev('API_URL')
 
     city_name = request.GET.get('city', '')
     data = []
